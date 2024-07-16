@@ -1,23 +1,16 @@
-package com.App.APP.Entity;
+package com.App.APP.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name ="usuario")
+@NoArgsConstructor
+@Builder
 
-public class Usuario {
-
-    //g
-
+public class UsuarioDTO {
     private int idusuario;
 
     private String username;
