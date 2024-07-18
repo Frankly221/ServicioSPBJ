@@ -1,6 +1,7 @@
 package com.App.APP.DTO;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class PersonaDTO {
     private String domicilio;
     private Date fecha_nac;
     private  String lugar_nac;
-    private int telefono;
+    // private int telefono;
     private String residencia;
     private String estado_civil;
     private int n_hijos;
@@ -28,5 +29,8 @@ public class PersonaDTO {
     private Boolean tipo_documento;
     private int ndoc_documento;
     private String correo;
-    
+
+    private List<DiagnosticoDTO> diagnosticosDTO;
+
+
 }

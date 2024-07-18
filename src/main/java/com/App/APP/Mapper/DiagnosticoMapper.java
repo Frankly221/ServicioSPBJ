@@ -1,10 +1,20 @@
 package com.App.APP.Mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.App.APP.DTO.DiagnosticoDTO;
+import com.App.APP.DTO.PagoDTO;
+import com.App.APP.DTO.SesionesDTO;
 import com.App.APP.Entity.Diagnostico;
 
 public class DiagnosticoMapper {
     public static DiagnosticoDTO DatosToDTO(Diagnostico diagnostico) {
+
+        List<SesionesDTO> sesionesDTO = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO).collect(Collectors.toList());
+        List<PagoDTO> pagoDTO = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO).collect(Collectors.toList());
+
+
         return DiagnosticoDTO.builder()
                 .idhc(diagnostico.getIdhc())
                 .etiologia(diagnostico.getEtiologia())
@@ -17,7 +27,9 @@ public class DiagnosticoMapper {
                 .n_sesion(diagnostico.getN_sesion())
                 .plan_pago(diagnostico.getPlan_pago())
                 .monto_total(diagnostico.getMonto_total())
-                .persona_idpersona(diagnostico.getPersona_idpersona())
+                .edad(diagnostico.getEdad())
+                .sesionesDTOS(sesionesDTO)
+                .pagosDTOS(pagoDTO)
                 .build();
     }
 
@@ -34,7 +46,7 @@ public class DiagnosticoMapper {
                 .n_sesion(diagnosticoDTO.getN_sesion())
                 .plan_pago(diagnosticoDTO.getPlan_pago())
                 .monto_total(diagnosticoDTO.getMonto_total())
-                .persona_idpersona(diagnosticoDTO.getPersona_idpersona())
+                .edad(diagnosticoDTO.getEdad())
                 .build();
     }
 

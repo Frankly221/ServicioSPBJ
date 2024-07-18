@@ -52,8 +52,6 @@ public class UsuarioService {
 
         usuarioEncontrado.setUsername(usuarioDTO.getUsername());
         usuarioEncontrado.setPassword(usuarioDTO.getPassword());
-        usuarioEncontrado.setPersona_idpersona(usuarioDTO.getPersona_idpersona());
-        usuarioEncontrado.setRol_idrol(usuarioDTO.getRol_idrol());
 
         usuarioRepositorio.save(usuarioEncontrado);
     }

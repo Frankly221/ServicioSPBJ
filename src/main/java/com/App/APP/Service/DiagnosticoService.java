@@ -42,7 +42,7 @@ public class DiagnosticoService {
         diagnosticoEncontrado.setN_sesion(diagnosticoDTO.getN_sesion());
         diagnosticoEncontrado.setPlan_pago(diagnosticoDTO.getPlan_pago());
         diagnosticoEncontrado.setMonto_total(diagnosticoDTO.getMonto_total());
-        diagnosticoEncontrado.setPersona_idpersona(diagnosticoDTO.getPersona_idpersona());
+        diagnosticoEncontrado.setEdad(diagnosticoDTO.getEdad());
 
         diagnosticoRepository.save(diagnosticoEncontrado);
     }

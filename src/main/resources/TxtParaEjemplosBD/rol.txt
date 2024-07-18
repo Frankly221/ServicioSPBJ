@@ -1,0 +1,12 @@
+INSERT INTO rol (idrol, nombre_rol)
+VALUES 
+(1, 'Admin'),
+(2, 'User'),
+(3, 'Manager'),
+(4, 'Supervisor'),
+(5, 'Employee'),
+(6, 'Guest'),
+(7, 'Owner'),
+(8, 'Editor'),
+(9, 'Viewer'),
+(10, 'Contributor');

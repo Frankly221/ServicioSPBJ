@@ -1,0 +1,12 @@
+INSERT INTO tip_doc (id_doc, nombre_doc)
+VALUES 
+(1, 'DNI'),
+(2, 'Pasaporte'),
+(3, 'Licencia de Conducir'),
+(4, 'Cedula de Identidad'),
+(5, 'Tarjeta de Residencia'),
+(6, 'Permiso de Trabajo'),
+(7, 'Visa'),
+(8, 'Certificado de Nacimiento'),
+(9, 'Documento Militar'),
+(10, 'Otros');

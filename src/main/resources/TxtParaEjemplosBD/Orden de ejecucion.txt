@@ -1,0 +1,13 @@
+esta_diag
+tipo_doc
+privilegios
+rol
+priv_rol
+persona
+telefono
+diagnostico
+pago
+sesiones
+usuario
+descuento
+tarifario

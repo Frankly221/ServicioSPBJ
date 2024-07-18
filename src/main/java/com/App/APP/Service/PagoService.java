@@ -34,8 +34,6 @@ public class PagoService {
         pagoEncontrado.setFecha(pagoDTO.getFecha());
         pagoEncontrado.setPago(pagoDTO.getPago());
         pagoEncontrado.setN_sesion(pagoDTO.getN_sesion());
-        pagoEncontrado.setDiagnostico_idhc(pagoDTO.getDiagnostico_idhc());
-
         pagoRepository.save(pagoEncontrado);
     }
 

@@ -37,8 +37,6 @@ public class SesionesService {
         sesionesEncontrado.setTipo(sesionesDTO.getTipo());
         sesionesEncontrado.setHora(sesionesDTO.getHora());
         sesionesEncontrado.setAsistio(sesionesDTO.getAsistio());
-        sesionesEncontrado.setDiagnostico_idhc(sesionesDTO.getDiagnostico_idhc());
-
         sesionesRepository.save(sesionesEncontrado);
     }
 

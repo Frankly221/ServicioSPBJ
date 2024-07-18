@@ -1,0 +1,12 @@
+INSERT INTO esta_diag (id_esta_diag, estado)
+VALUES 
+(1, 'Activo'),
+(2, 'Inactivo'),
+(3, 'Pendiente'),
+(4, 'Completo'),
+(5, 'Cancelado'),
+(6, 'En Proceso'),
+(7, 'Suspendido'),
+(8, 'Aprobado'),
+(9, 'Rechazado'),
+(10, 'En Espera');

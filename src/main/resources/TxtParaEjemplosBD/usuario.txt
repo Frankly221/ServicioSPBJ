@@ -1,0 +1,12 @@
+INSERT INTO usuario (idusuario, username, password, idpersona, idrol)
+VALUES 
+(1, 'alexis', '1234', 1, 1),
+(2, 'keny', '1234', 2, 2),
+(3, 'alvaro', '1234', 3, 3),
+(4, 'marialopez', 'password4', 4, 4),
+(5, 'carloshernandez', 'password5', 5, 5),
+(6, 'laurarodriguez', 'password6', 6, 6),
+(7, 'miguelgarcia', 'password7', 7, 7),
+(8, 'sofiamartinez', 'password8', 8, 8),
+(9, 'davidsanchez', 'password9', 9, 9),
+(10, 'andreadiaz', 'password10', 10, 10);

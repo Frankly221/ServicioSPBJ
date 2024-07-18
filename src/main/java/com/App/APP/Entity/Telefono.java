@@ -1,8 +1,5 @@
 package com.App.APP.Entity;
 
-import java.sql.Date;
-import java.sql.Time;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -18,25 +15,20 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name ="sesiones")
-@Entity
 @Builder
-public class Sesiones {
+@AllArgsConstructor
+@Entity
+@Table(name = "telefono")
+
+public class Telefono {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_sesion;
+    private int idtf;
+    private int telefono;
 
-    private Date fecha;
-    private String descripcion;
-    private Boolean tipo;
-    private Time hora;
-    private Boolean asistio;
-
-
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "idhc")
-    private Diagnostico diagnostico;
-
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name = "idpersona")
+    private Persona persona;
+    
 }

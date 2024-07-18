@@ -42,8 +42,6 @@ public class Priv_RolService {
     public void EditEntityPriv_Rol(int idPriv_Rol, Priv_RolDTO priv_RolDTO){
         Priv_Rol priv_RolEncontrado = priv_RolRepositorio.findById(idPriv_Rol).orElseThrow(() -> new RuntimeException("Priv_Rol no encontrado"));
 
-        priv_RolEncontrado.setPrivilegios_idpri(priv_RolDTO.getPrivilegios_idpri());
-        priv_RolEncontrado.setRol_idrol(priv_RolDTO.getRol_idrol());
 
         priv_RolRepositorio.save(priv_RolEncontrado);
     }

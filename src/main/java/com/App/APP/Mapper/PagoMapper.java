@@ -10,9 +10,7 @@ public class PagoMapper {
                 .id_pago(pago.getId_pago())
                 .fecha(pago.getFecha())
                 .pago(pago.getPago())
-                .n_sesion(pago.getN_sesion())
-                .diagnostico_idhc(pago.getDiagnostico_idhc())
-                .build();
+                .n_sesion(pago.getN_sesion())                .build();
     }
 
     public static Pago DatosToEntity(PagoDTO pagoDTO) {
@@ -21,7 +19,6 @@ public class PagoMapper {
                 .fecha(pagoDTO.getFecha())
                 .pago(pagoDTO.getPago())
                 .n_sesion(pagoDTO.getN_sesion())
-                .diagnostico_idhc(pagoDTO.getDiagnostico_idhc())
                 .build();
     }
 

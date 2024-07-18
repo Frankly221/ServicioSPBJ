@@ -12,7 +12,6 @@ public class SesionesMapper {
                 .tipo(sesiones.getTipo())
                 .hora(sesiones.getHora())
                 .asistio(sesiones.getAsistio())
-                .diagnostico_idhc(sesiones.getDiagnostico_idhc())
                 .build();
     }
 
@@ -24,7 +23,6 @@ public class SesionesMapper {
                 .tipo(sesionesDTO.getTipo())
                 .hora(sesionesDTO.getHora())
                 .asistio(sesionesDTO.getAsistio())
-                .diagnostico_idhc(sesionesDTO.getDiagnostico_idhc())
                 .build();
     }
 

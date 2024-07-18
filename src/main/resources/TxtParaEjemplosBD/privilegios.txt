@@ -1,0 +1,12 @@
+INSERT INTO privilegios (id_privilegio, url, nombreprivi)
+VALUES 
+(1, '/home', 'Home'),
+(2, '/dashboard', 'Dashboard'),
+(3, '/reports', 'Reports'),
+(4, '/settings', 'Settings'),
+(5, '/profile', 'Profile'),
+(6, '/admin', 'Admin'),
+(7, '/users', 'Users'),
+(8, '/roles', 'Roles'),
+(9, '/permissions', 'Permissions'),
+(10, '/logs', 'Logs');

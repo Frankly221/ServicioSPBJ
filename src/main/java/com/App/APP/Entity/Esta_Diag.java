@@ -14,27 +14,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "rol")
 @Builder
 @Entity
+@Table(name = "esta_diag")
+@NoArgsConstructor
+@AllArgsConstructor
 
+public class Esta_Diag {
 
-public class Rol {
-
-    //H
     
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idrol;
+    private int id_esta_diag;
+    
+    private String estado;
 
-    private String nombre_rol;
-
-
-    @OneToMany(mappedBy = "rol")
-    private List<Priv_Rol> priv_rol;
-
-    @OneToMany(mappedBy = "rol")
-    private List<Usuario> usuario;
+    @OneToMany(mappedBy = "esta_diag")
+    List<Diagnostico> diagnosticos;
+    
 }

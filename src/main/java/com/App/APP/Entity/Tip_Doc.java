@@ -13,28 +13,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "rol")
 @Builder
-@Entity
+@Table(name = "tip_doc")
 
+public class Tip_Doc {
 
-public class Rol {
-
-    //H
-    
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idrol;
+    private int id_doc;
+    private String nombre_doc;
 
-    private String nombre_rol;
-
-
-    @OneToMany(mappedBy = "rol")
-    private List<Priv_Rol> priv_rol;
-
-    @OneToMany(mappedBy = "rol")
-    private List<Usuario> usuario;
+    @OneToMany(mappedBy= "tip_doc")
+    private List<Persona> persona;
+    
 }

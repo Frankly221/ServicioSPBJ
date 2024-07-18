@@ -1,0 +1,12 @@
+INSERT INTO person (idpersona, nombre, apellido, domicilio, fecha_nac, lugar_nac, residencia, estado_civil, n_hijos, referencia, tipo_documento, ndoc_documento, correo, genero, id_doc)
+VALUES 
+(1, 'Juan', 'Perez', 'Calle 1', '1990-01-01', 'Ciudad A', 'Ciudad B', 'Soltero', 0, 'Referencia 1', true, 12345678, 'juan.perez@example.com', true, 1),
+(2, 'Ana', 'Gomez', 'Calle 2', '1985-02-02', 'Ciudad B', 'Ciudad C', 'Casado', 2, 'Referencia 2', false, 23456789, 'ana.gomez@example.com', false, 2),
+(3, 'Luis', 'Martinez', 'Calle 3', '1995-03-03', 'Ciudad C', 'Ciudad D', 'Divorciado', 1, 'Referencia 3', true, 34567890, 'luis.martinez@example.com', true, 3),
+(4, 'Maria', 'Lopez', 'Calle 4', '1980-04-04', 'Ciudad D', 'Ciudad E', 'Viudo', 3, 'Referencia 4', false, 45678901, 'maria.lopez@example.com', false, 4),
+(5, 'Carlos', 'Hernandez', 'Calle 5', '1992-05-05', 'Ciudad E', 'Ciudad F', 'Soltero', 0, 'Referencia 5', true, 56789012, 'carlos.hernandez@example.com', true, 5),
+(6, 'Laura', 'Rodriguez', 'Calle 6', '1988-06-06', 'Ciudad F', 'Ciudad G', 'Casado', 2, 'Referencia 6', false, 67890123, 'laura.rodriguez@example.com', false, 6),
+(7, 'Miguel', 'Garcia', 'Calle 7', '1975-07-07', 'Ciudad G', 'Ciudad H', 'Divorciado', 1, 'Referencia 7', true, 78901234, 'miguel.garcia@example.com', true, 7),
+(8, 'Sofia', 'Martinez', 'Calle 8', '1983-08-08', 'Ciudad H', 'Ciudad I', 'Viudo', 3, 'Referencia 8', false, 89012345, 'sofia.martinez@example.com', false, 8),
+(9, 'David', 'Sanchez', 'Calle 9', '1996-09-09', 'Ciudad I', 'Ciudad J', 'Soltero', 0, 'Referencia 9', true, 90123456, 'david.sanchez@example.com', true, 9),
+(10, 'Andrea', 'Diaz', 'Calle 10', '1982-10-10', 'Ciudad J', 'Ciudad K', 'Casado', 2, 'Referencia 10', false, 12345678, 'andrea.diaz@example.com', false, 10);

@@ -13,8 +13,6 @@ public class UsuarioMapper {
         .idusuario(usuario.getIdusuario())
         .username(usuario.getUsername())
         .password(usuario.getPassword())
-        .persona_idpersona(usuario.getPersona_idpersona())
-        .rol_idrol(usuario.getRol_idrol())
         .build();
         
     }
@@ -26,8 +24,6 @@ public class UsuarioMapper {
          .idusuario(usuarioDTO.getIdusuario())
          .username(usuarioDTO.getUsername())
          .password(usuarioDTO.getPassword())
-         .persona_idpersona(usuarioDTO.getPersona_idpersona())
-         .rol_idrol(usuarioDTO.getRol_idrol())
          .build();
 
     }

@@ -1,9 +1,12 @@
 package com.App.APP.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,10 +29,14 @@ public class Priv_Rol {
     private int id_priv_rol;
 
 
-    private int privilegios_idpri;
 
-    private int rol_idrol;
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name = "id_privilegio")
+    private Privilegios privilegios;
 
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name = "idrol")
+    private Rol rol;
 
     
 }

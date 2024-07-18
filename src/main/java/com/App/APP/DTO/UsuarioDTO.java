@@ -17,7 +17,7 @@ public class UsuarioDTO {
 
     private String password;
 
-    private int persona_idpersona;
+    private  PersonaDTO persona;
 
     private int rol_idrol;
     

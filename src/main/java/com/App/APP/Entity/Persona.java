@@ -1,11 +1,17 @@
 package com.App.APP.Entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +37,6 @@ public class Persona {
     private String domicilio;
     private Date fecha_nac;
     private  String lugar_nac;
-    private int telefono;
     private String residencia;
     private String estado_civil;
     private int n_hijos;
@@ -39,6 +44,21 @@ public class Persona {
     private Boolean tipo_documento;
     private int ndoc_documento;
     private String correo;
+    private Boolean genero;
+
+
+    @OneToMany(mappedBy = "persona")
+    private List<Diagnostico> diagnosticos;
     
+    @OneToOne(mappedBy= "persona")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "persona")
+    private List<Telefono> telefono;
+
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name = "id_doc")
+    private Tip_Doc tip_doc;
+
       
 }

@@ -1,9 +1,13 @@
 package com.App.APP.Entity;
 
+
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +31,9 @@ public class Privilegios {
     private String url;
 
     private String nombreprivi;
+
+    @OneToMany(mappedBy = "privilegios")
+    private List<Priv_Rol> priv_rol;
 
 
 

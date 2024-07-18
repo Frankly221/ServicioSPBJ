@@ -56,7 +56,6 @@ public class PersonaService {
         existePerson.setDomicilio(personaDTO.getDomicilio());
         existePerson.setFecha_nac(personaDTO.getFecha_nac());
         existePerson.setLugar_nac(personaDTO.getLugar_nac());
-        existePerson.setTelefono(personaDTO.getTelefono());
         existePerson.setResidencia(personaDTO.getResidencia());
         existePerson.setEstado_civil(personaDTO.getEstado_civil());
         existePerson.setN_hijos(personaDTO.getN_hijos());

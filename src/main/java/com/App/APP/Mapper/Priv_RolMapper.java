@@ -11,8 +11,6 @@ public class Priv_RolMapper {
 
         return Priv_RolDTO.builder()
         .id_priv_rol(priva_rol.getId_priv_rol())
-        .privilegios_idpri(priva_rol.getPrivilegios_idpri())
-        .rol_idrol(priva_rol.getRol_idrol())
         .build();
                 
     }
@@ -21,8 +19,6 @@ public class Priv_RolMapper {
 
         return Priv_Rol.builder()
         .id_priv_rol(priva_rolDTO.getId_priv_rol())
-        .privilegios_idpri(priva_rolDTO.getPrivilegios_idpri())
-        .rol_idrol(priva_rolDTO.getRol_idrol())
         .build();
     }
 
