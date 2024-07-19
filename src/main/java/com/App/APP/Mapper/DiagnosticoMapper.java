@@ -14,9 +14,12 @@ public class DiagnosticoMapper {
         List<SesionesDTO> sesionesDTO = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO).collect(Collectors.toList());
         List<PagoDTO> pagoDTO = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO).collect(Collectors.toList());
 
+        // Persona persona = diagnostico.getPersona();
+        //  PersonaDTO personasDTO = persona != null ? PersonaMapper.DatosNameToDTO(persona) : null;
 
         return DiagnosticoDTO.builder()
                 .idhc(diagnostico.getIdhc())
+                .inic_enferm(diagnostico.getInic_enferm())
                 .etiologia(diagnostico.getEtiologia())
                 .diagnostico(diagnostico.getDiagnostico())
                 .observacion(diagnostico.getObservacion())
@@ -28,6 +31,7 @@ public class DiagnosticoMapper {
                 .plan_pago(diagnostico.getPlan_pago())
                 .monto_total(diagnostico.getMonto_total())
                 .edad(diagnostico.getEdad())
+                // .personaDTO(personasDTO)
                 .sesionesDTOS(sesionesDTO)
                 .pagosDTOS(pagoDTO)
                 .build();
@@ -36,6 +40,7 @@ public class DiagnosticoMapper {
     public static Diagnostico DatosToEntity(DiagnosticoDTO diagnosticoDTO) {
         return Diagnostico.builder()
                 .idhc(diagnosticoDTO.getIdhc())
+                .inic_enferm(diagnosticoDTO.getInic_enferm())
                 .etiologia(diagnosticoDTO.getEtiologia())
                 .diagnostico(diagnosticoDTO.getDiagnostico())
                 .observacion(diagnosticoDTO.getObservacion())

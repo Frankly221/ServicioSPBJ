@@ -7,17 +7,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+public class Tip_DocDTO {
+    private int id_doc;
+    private String nombre_doc;
 
-public class RolDTO {
-    private int idrol;
-
-    private String nombre_rol;
-
-    private List<Priv_RolDTO> priv_rolDTO;
-
-    
+    List<PersonaDTO> personaDTO;
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,7 @@ public class SesionesController {
 
     @PostMapping
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> saveSesiones(SesionesDTO sesionesDTO) {
+    public ResponseEntity<?> saveSesiones(@RequestBody SesionesDTO sesionesDTO) {
         try {
             sesionesService.SaveSesiones(sesionesDTO);
             return new ResponseEntity("Sesión guardada", HttpStatus.CREATED);
@@ -48,7 +49,7 @@ public class SesionesController {
 
     @PutMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> editSesiones(@PathVariable("id") int idSesiones, SesionesDTO sesionesDTO) {
+    public ResponseEntity<?> editSesiones(@PathVariable("id") int idSesiones,@RequestBody SesionesDTO sesionesDTO) {
         try {
             sesionesService.editSesiones(idSesiones, sesionesDTO);
             return new ResponseEntity("Sesión actualizada", HttpStatus.OK);

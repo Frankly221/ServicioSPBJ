@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class DescuentoController {
 
     @PostMapping
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> saveDescuento(DescuentoDTO descuentoDTO) {
+    public ResponseEntity<?> saveDescuento(@RequestBody DescuentoDTO descuentoDTO) {
         try {
             descuentoService.SaveDescuento(descuentoDTO);
             return new ResponseEntity("Descuento guardado", HttpStatus.CREATED);
@@ -47,7 +48,7 @@ public class DescuentoController {
 
     @PutMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> editDescuento(@PathVariable("id") int idDescuento, DescuentoDTO descuentoDTO) {
+    public ResponseEntity<?> editDescuento(@PathVariable("id") int idDescuento, @RequestBody DescuentoDTO descuentoDTO) {
         try {
             descuentoService.editDescuento(idDescuento, descuentoDTO);
             return new ResponseEntity("Descuento actualizado", HttpStatus.OK);

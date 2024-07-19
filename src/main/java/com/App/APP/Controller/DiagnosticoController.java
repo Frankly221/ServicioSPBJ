@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,10 +36,21 @@ public class DiagnosticoController {
         }
         return new ResponseEntity(diagnosticoList, HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public ResponseEntity<?> getDiagnosticoById(@PathVariable("id") int idDiagnostico) {
+        DiagnosticoDTO diagnostico = diagnosticoService.getDiagnosticoById(idDiagnostico);
+        if (diagnostico == null) {
+            return new ResponseEntity("Diagnóstico no encontrado", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(diagnostico, HttpStatus.OK);
+    }
+
+
 
     @PostMapping
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> saveDiagnostico(DiagnosticoDTO diagnosticoDTO) {
+    public ResponseEntity<?> saveDiagnostico(@RequestBody DiagnosticoDTO diagnosticoDTO) {
         try {
             diagnosticoService.SaveDiagnostico(diagnosticoDTO);
             return new ResponseEntity("Diagnóstico guardado", HttpStatus.CREATED);
@@ -47,16 +59,19 @@ public class DiagnosticoController {
         }
     }
 
-    @PutMapping("/{id}")
+  
+       @PutMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> editDiagnostico(@PathVariable("id") int idDiagnostico, DiagnosticoDTO diagnosticoDTO) {
+    public ResponseEntity<?> editDiagnostico(@PathVariable("id") int idDiagnostico, @RequestBody DiagnosticoDTO diagnosticoDTO) {
         try {
-            diagnosticoService.editDiagnostico(idDiagnostico, diagnosticoDTO);
-            return new ResponseEntity("Diagnóstico actualizado", HttpStatus.OK);
+            DiagnosticoDTO updatedDiagnostico = diagnosticoService.editDiagnostico(idDiagnostico, diagnosticoDTO);
+            return new ResponseEntity(updatedDiagnostico, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("No se pudo actualizar el diagnóstico", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+ 
 
     @DeleteMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })

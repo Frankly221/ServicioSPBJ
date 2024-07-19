@@ -16,9 +16,9 @@ public class Priv_RolDTO {
     private int id_priv_rol;
 
 
-    private int privilegios_idpri;
+    private PrivilegiosDTO privilegiosDTO;
 
-    private int rol_idrol;
+    private RolDTO rolDTO;
 
     
 }

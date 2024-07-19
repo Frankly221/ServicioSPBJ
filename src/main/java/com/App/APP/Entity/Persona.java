@@ -45,6 +45,7 @@ public class Persona {
     private int ndoc_documento;
     private String correo;
     private Boolean genero;
+    private int telefono;
 
 
     @OneToMany(mappedBy = "persona")
@@ -54,7 +55,7 @@ public class Persona {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "persona")
-    private List<Telefono> telefono;
+    private List<Telefono> telefonosecundario;
 
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name = "id_doc")

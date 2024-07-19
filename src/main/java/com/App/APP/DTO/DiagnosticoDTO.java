@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class DiagnosticoDTO {
     
     private int idhc;
+
     private Date inic_enferm;
     private String etiologia;
     private String diagnostico;
@@ -28,7 +29,9 @@ public class DiagnosticoDTO {
     private Double monto_total;
     private int edad;
 
-    private int persona_idpersona;
+    // private Esta_DiagDTO esta_DiagDTO;
+
+    // private PersonaDTO personaDTO;
 
     List<SesionesDTO> sesionesDTOS;
     List<PagoDTO> pagosDTOS;

@@ -21,7 +21,6 @@ public class PersonaDTO {
     private String domicilio;
     private Date fecha_nac;
     private  String lugar_nac;
-    // private int telefono;
     private String residencia;
     private String estado_civil;
     private int n_hijos;
@@ -29,8 +28,13 @@ public class PersonaDTO {
     private Boolean tipo_documento;
     private int ndoc_documento;
     private String correo;
+    private int telefono;
 
     private List<DiagnosticoDTO> diagnosticosDTO;
+    private List<TelefonoDTO> telefonoDTO;
+    private Tip_DocDTO tip_docDTO;
+
+
 
 
 }

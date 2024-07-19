@@ -1,7 +1,5 @@
 package com.App.APP.DTO;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class RolDTO {
-    private int idrol;
+public class TelefonoDTO {
 
-    private String nombre_rol;
+    private int idtf;
+    private int telefono;
 
-    private List<Priv_RolDTO> priv_rolDTO;
-
+    private PersonaDTO personaDTO;
     
 }

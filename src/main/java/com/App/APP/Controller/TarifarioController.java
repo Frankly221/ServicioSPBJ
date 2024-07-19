@@ -7,15 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.App.APP.DTO.TarifarioDTO;
 import com.App.APP.Service.TarifarioService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping(value = "/api/v1/tarifario")
@@ -36,7 +37,7 @@ public class TarifarioController {
 
     @PostMapping
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> saveTarifario(TarifarioDTO tarifarioDTO) {
+    public ResponseEntity<?> saveTarifario(@RequestBody TarifarioDTO tarifarioDTO) {
         try {
             tarifarioService.SaveTarifario(tarifarioDTO);
             return new ResponseEntity("Tarifario guardado", HttpStatus.CREATED);
@@ -47,7 +48,7 @@ public class TarifarioController {
 
     @PutMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> editTarifario(@PathVariable("id") int idTarifario, TarifarioDTO tarifarioDTO) {
+    public ResponseEntity<?> editTarifario(@PathVariable("id") int idTarifario, @RequestBody TarifarioDTO tarifarioDTO) {
         try {
             tarifarioService.editTarifario(idTarifario, tarifarioDTO);
             return new ResponseEntity("Tarifario actualizado", HttpStatus.OK);

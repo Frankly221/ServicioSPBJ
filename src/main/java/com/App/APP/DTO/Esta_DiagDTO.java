@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class Esta_DiagDTO {
 
-public class RolDTO {
-    private int idrol;
+    private int id_esta_diag;
+    
+    private String estado;
 
-    private String nombre_rol;
-
-    private List<Priv_RolDTO> priv_rolDTO;
-
+    List<DiagnosticoDTO> diagnosticoDTO;
     
 }

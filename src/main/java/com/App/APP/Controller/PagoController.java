@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.App.APP.DTO.PagoDTO;
 import com.App.APP.Service.PagoService;
@@ -31,7 +32,7 @@ public class PagoController {
 
     @PostMapping
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> savePago(PagoDTO pagoDTO) {
+    public ResponseEntity<?> savePago(@RequestBody PagoDTO pagoDTO) {
         try {
             pagoService.SavePago(pagoDTO);
             return new ResponseEntity("Pago guardado", HttpStatus.CREATED);
@@ -42,7 +43,7 @@ public class PagoController {
 
     @PutMapping("/{id}")
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity<?> editPago(@PathVariable("id") int idPago, PagoDTO pagoDTO) {
+    public ResponseEntity<?> editPago(@PathVariable("id") int idPago, @RequestBody PagoDTO pagoDTO) {
         try {
             pagoService.editPago(idPago, pagoDTO);
             return new ResponseEntity("Pago actualizado", HttpStatus.OK);

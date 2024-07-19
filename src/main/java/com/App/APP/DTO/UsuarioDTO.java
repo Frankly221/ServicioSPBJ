@@ -1,5 +1,6 @@
 package com.App.APP.DTO;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +18,8 @@ public class UsuarioDTO {
 
     private String password;
 
-    private  PersonaDTO persona;
+    private  PersonaDTO personaDTO;
 
-    private int rol_idrol;
+    private RolDTO rolDTO;
     
 }

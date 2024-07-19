@@ -22,4 +22,7 @@ public class SesionesDTO {
     private Boolean asistio;
     private int diagnostico_idhc;
 
+     private DiagnosticoDTO diagnosticoDTO;
+
+
 }

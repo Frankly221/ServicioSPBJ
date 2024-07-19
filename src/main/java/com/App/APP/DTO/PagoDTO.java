@@ -17,6 +17,7 @@ public class PagoDTO {
     private Date fecha;
     private Double pago;
     private int n_sesion;
-    private int diagnostico_idhc;
+
+    private DiagnosticoDTO diagnosticoDTO;
 
 }

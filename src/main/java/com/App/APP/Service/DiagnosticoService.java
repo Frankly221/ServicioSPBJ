@@ -23,14 +23,20 @@ public class DiagnosticoService {
         }
         return diagnosticoList.stream().map(DiagnosticoMapper::DatosToDTO).collect(Collectors.toList());
     }
+    public DiagnosticoDTO getDiagnosticoById(int idDiagnostico) {
+        Diagnostico diagnostico = searchEntityDiagnostico(idDiagnostico);
+        return DiagnosticoMapper.DatosToDTO(diagnostico);
+    }
 
     public void SaveDiagnostico(DiagnosticoDTO diagnosticoDTO) {
         Diagnostico Diagnostico = DiagnosticoMapper.DatosToEntity(diagnosticoDTO);
         diagnosticoRepository.save(Diagnostico);
     }
 
-    public void editDiagnostico(int idDiagnostico, DiagnosticoDTO diagnosticoDTO) {
+    public DiagnosticoDTO editDiagnostico(int idDiagnostico, DiagnosticoDTO diagnosticoDTO) {
+
         Diagnostico diagnosticoEncontrado = searchEntityDiagnostico(idDiagnostico);
+
         diagnosticoEncontrado.setInic_enferm(diagnosticoDTO.getInic_enferm());
         diagnosticoEncontrado.setEtiologia(diagnosticoDTO.getEtiologia());
         diagnosticoEncontrado.setDiagnostico(diagnosticoDTO.getDiagnostico());
@@ -45,6 +51,9 @@ public class DiagnosticoService {
         diagnosticoEncontrado.setEdad(diagnosticoDTO.getEdad());
 
         diagnosticoRepository.save(diagnosticoEncontrado);
+
+        return DiagnosticoMapper.DatosToDTO(diagnosticoEncontrado);
+
     }
 
     public void deleteDiagnostico(int idDiagnostico) {
