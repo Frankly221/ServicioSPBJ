@@ -1,7 +1,5 @@
 package com.App.APP.DTO;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +13,5 @@ public class Tip_DocDTO {
     private int id_doc;
     private String nombre_doc;
 
-    List<PersonaDTO> personaDTO;
+    // List<PersonaDTO> personaDTO;
 }

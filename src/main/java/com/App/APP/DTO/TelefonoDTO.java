@@ -15,6 +15,6 @@ public class TelefonoDTO {
     private int idtf;
     private int telefono;
 
-    private PersonaDTO personaDTO;
+    // private PersonaDTO personaDTO;
     
 }

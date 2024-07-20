@@ -1,7 +1,6 @@
 package com.App.APP.DTO;
 
 import java.sql.Date;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +32,7 @@ public class DiagnosticoDTO {
 
     // private PersonaDTO personaDTO;
 
-    List<SesionesDTO> sesionesDTOS;
-    List<PagoDTO> pagosDTOS;
+    // List<SesionesDTO> sesionesDTOS;
+    // List<PagoDTO> pagosDTOS;
 
     }

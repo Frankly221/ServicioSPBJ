@@ -1,18 +1,13 @@
 package com.App.APP.Mapper;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.App.APP.DTO.DiagnosticoDTO;
-import com.App.APP.DTO.PagoDTO;
-import com.App.APP.DTO.SesionesDTO;
 import com.App.APP.Entity.Diagnostico;
 
 public class DiagnosticoMapper {
     public static DiagnosticoDTO DatosToDTO(Diagnostico diagnostico) {
 
-        List<SesionesDTO> sesionesDTO = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO).collect(Collectors.toList());
-        List<PagoDTO> pagoDTO = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO).collect(Collectors.toList());
+        // List<SesionesDTO> sesionesDTO = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO).collect(Collectors.toList());
+        // List<PagoDTO> pagoDTO = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO).collect(Collectors.toList());
 
         // Persona persona = diagnostico.getPersona();
         //  PersonaDTO personasDTO = persona != null ? PersonaMapper.DatosNameToDTO(persona) : null;
@@ -32,8 +27,8 @@ public class DiagnosticoMapper {
                 .monto_total(diagnostico.getMonto_total())
                 .edad(diagnostico.getEdad())
                 // .personaDTO(personasDTO)
-                .sesionesDTOS(sesionesDTO)
-                .pagosDTOS(pagoDTO)
+                // .sesionesDTOS(sesionesDTO)
+                // .pagosDTOS(pagoDTO)
                 .build();
     }
 

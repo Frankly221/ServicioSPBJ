@@ -1,12 +1,15 @@
 package com.App.APP.DTO;
 
 import java.util.Date;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 @Data
 @NoArgsConstructor
@@ -30,9 +33,9 @@ public class PersonaDTO {
     private String correo;
     private int telefono;
 
-    private List<DiagnosticoDTO> diagnosticosDTO;
-    private List<TelefonoDTO> telefonoDTO;
-    private Tip_DocDTO tip_docDTO;
+    // private List<DiagnosticoDTO> diagnosticosDTO;
+    // private List<TelefonoDTO> telefonoDTO;
+    // private Tip_DocDTO tip_docDTO;
 
 
 

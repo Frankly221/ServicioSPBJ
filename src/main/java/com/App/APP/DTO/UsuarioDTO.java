@@ -18,8 +18,8 @@ public class UsuarioDTO {
 
     private String password;
 
-    private  PersonaDTO personaDTO;
+    // private  PersonaDTO personaDTO;
 
-    private RolDTO rolDTO;
+    // private RolDTO rolDTO;
     
 }

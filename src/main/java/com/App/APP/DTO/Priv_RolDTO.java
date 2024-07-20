@@ -18,7 +18,7 @@ public class Priv_RolDTO {
 
     private PrivilegiosDTO privilegiosDTO;
 
-    private RolDTO rolDTO;
+    // private RolDTO rolDTO;
 
     
 }

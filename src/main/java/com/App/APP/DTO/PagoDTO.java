@@ -18,6 +18,6 @@ public class PagoDTO {
     private Double pago;
     private int n_sesion;
 
-    private DiagnosticoDTO diagnosticoDTO;
+    // private DiagnosticoDTO diagnosticoDTO;
 
 }

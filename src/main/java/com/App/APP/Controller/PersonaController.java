@@ -19,7 +19,7 @@ import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.Service.PersonaService;
 
 @RestController
-@RequestMapping(value = "/api/v1/paciente")
+@RequestMapping(value = "/api/v1/persona")
 @CrossOrigin("/**")
 public class PersonaController {
 

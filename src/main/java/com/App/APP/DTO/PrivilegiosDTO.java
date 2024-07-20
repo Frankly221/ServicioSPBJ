@@ -1,7 +1,5 @@
 package com.App.APP.DTO;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +18,7 @@ public class PrivilegiosDTO {
 
     private String nombreprivi;
 
-    private List<Priv_RolDTO> priv_rolDTO;
+    // private List<Priv_RolDTO> priv_rolDTO;
 
     
 }

@@ -1,7 +1,5 @@
 package com.App.APP.DTO;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +15,6 @@ public class Esta_DiagDTO {
     
     private String estado;
 
-    List<DiagnosticoDTO> diagnosticoDTO;
+    // List<DiagnosticoDTO> diagnosticoDTO;
     
 }
