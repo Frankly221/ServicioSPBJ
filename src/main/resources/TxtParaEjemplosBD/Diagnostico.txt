@@ -1,12 +1,11 @@
-INSERT INTO diagnostico (idhc, inic_enferm, etiologia, diagnostico, observacion, fecha_eval, peso, talla, enf_cronica, n_sesion, plan_pago, monto_total, edad, id_esta_diag, idpersona)
-VALUES 
-(1, '2023-01-01', 'Virus', 'Gripe', 'Observación 1', '2023-01-05', 70.5, 1.75, 'Ninguna', 1, 'Plan 1', 150.0, 30, 1, 1),
-(2, '2023-02-01', 'Bacteria', 'Infección', 'Observación 2', '2023-02-05', 65.0, 1.68, 'Diabetes', 2, 'Plan 2', 200.0, 45, 2, 2),
-(3, '2023-03-01', 'Genético', 'Alergia', 'Observación 3', '2023-03-05', 80.0, 1.80, 'Hipertensión', 3, 'Plan 3', 300.0, 50, 3, 3),
-(4, '2023-04-01', 'Trauma', 'Fractura', 'Observación 4', '2023-04-05', 72.0, 1.70, 'Ninguna', 4, 'Plan 4', 400.0, 25, 4, 4),
-(5, '2023-05-01', 'Virus', 'Covid-19', 'Observación 5', '2023-05-05', 68.0, 1.65, 'Asma', 5, 'Plan 5', 500.0, 35, 5, 5),
-(6, '2023-06-01', 'Bacteria', 'Bronquitis', 'Observación 6', '2023-06-05', 75.0, 1.78, 'Artritis', 6, 'Plan 6', 600.0, 40, 6, 6),
-(7, '2023-07-01', 'Genético', 'Dermatitis', 'Observación 7', '2023-07-05', 85.0, 1.82, 'Diabetes', 7, 'Plan 7', 700.0, 55, 7, 7),
-(8, '2023-08-01', 'Trauma', 'Luxación', 'Observación 8', '2023-08-05', 78.0, 1.75, 'Hipertensión', 8, 'Plan 8', 800.0, 28, 8, 8),
-(9, '2023-09-01', 'Virus', 'Resfriado', 'Observación 9', '2023-09-05', 69.0, 1.68, 'Asma', 9, 'Plan 9', 900.0, 32, 9, 9),
-(10, '2023-10-01', 'Bacteria', 'Gastritis', 'Observación 10', '2023-10-05', 77.0, 1.80, 'Artritis', 10, 'Plan 10', 1000.0, 38, 10, 10);
+INSERT INTO diagnostico (inic_enferm, etiologia, diagnostico, observacion, fecha_eval, peso, talla, enf_cronica, n_sesion, plan_pago, monto_total, edad, id_esta_diag, idpersona) VALUES 
+('2023-01-01', 'Etiología A', 'Diagnóstico A', 'Observación A', '2023-01-05', 70.5, 1.75, 'Enfermedad Crónica A', 1, 'Plan A', 500.0, 30, 1, 1),
+('2023-02-15', 'Etiología B', 'Diagnóstico B', 'Observación B', '2023-02-20', 68.0, 1.70, 'Enfermedad Crónica B', 2, 'Plan B', 750.0, 25, 2, 2),
+('2023-03-10', 'Etiología C', 'Diagnóstico C', 'Observación C', '2023-03-15', 65.5, 1.68, 'Enfermedad Crónica C', 3, 'Plan C', 600.0, 28, 3, 3),
+('2023-04-05', 'Etiología D', 'Diagnóstico D', 'Observación D', '2023-04-10', 72.0, 1.80, 'Enfermedad Crónica D', 4, 'Plan D', 800.0, 35, 1, 4),
+('2023-05-01', 'Etiología E', 'Diagnóstico E', 'Observación E', '2023-05-06', 75.0, 1.85, 'Enfermedad Crónica E', 5, 'Plan E', 900.0, 40, 2, 5),
+('2023-06-20', 'Etiología F', 'Diagnóstico F', 'Observación F', '2023-06-25', 70.0, 1.75, 'Enfermedad Crónica F', 6, 'Plan F', 650.0, 32, 3, 1),
+('2023-07-15', 'Etiología G', 'Diagnóstico G', 'Observación G', '2023-07-20', 68.5, 1.78, 'Enfermedad Crónica G', 7, 'Plan G', 700.0, 29, 1, 2),
+('2023-08-10', 'Etiología H', 'Diagnóstico H', 'Observación H', '2023-08-15', 67.0, 1.70, 'Enfermedad Crónica H', 8, 'Plan H', 750.0, 31, 2, 3),
+('2023-09-05', 'Etiología I', 'Diagnóstico I', 'Observación I', '2023-09-10', 73.5, 1.80, 'Enfermedad Crónica I', 9, 'Plan I', 850.0, 34, 3, 4),
+('2023-10-01', 'Etiología J', 'Diagnóstico J', 'Observación J', '2023-10-06', 76.0, 1.85, 'Enfermedad Crónica J', 10, 'Plan J', 950.0, 38, 1, 5);

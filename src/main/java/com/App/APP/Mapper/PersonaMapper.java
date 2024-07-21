@@ -1,5 +1,9 @@
 package com.App.APP.Mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.App.APP.DTO.DiagnosticoDTO;
 import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.Entity.Persona;
 
@@ -9,8 +13,8 @@ public class PersonaMapper {
 
     public static PersonaDTO DatosToDTO(Persona persona){
 
-        // List<DiagnosticoDTO> diagnosticosDTO = persona.getDiagnosticos().stream().map(DiagnosticoMapper::DatosToDTO)
-        // .collect(Collectors.toList());
+        List<DiagnosticoDTO> diagnosticosDTO = persona.getDiagnosticos().stream().map(DiagnosticoMapper::DatosToDTO)
+        .collect(Collectors.toList());
 
         // List<TelefonoDTO> telefonosDTO = persona.getTelefonosecundario().stream().map(TelefonoMapper::DatosToDTO)
         // .collect(Collectors.toList());
@@ -31,7 +35,7 @@ public class PersonaMapper {
         .ndoc_documento(persona.getNdoc_documento())
         .correo(persona.getCorreo())
         .telefono(persona.getTelefono())
-        // .diagnosticosDTO(diagnosticosDTO)   
+        .diagnosticosDTO(diagnosticosDTO)   
         // .telefonoDTO(telefonosDTO)  
         .build();
         

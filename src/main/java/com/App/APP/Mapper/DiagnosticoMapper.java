@@ -1,7 +1,9 @@
 package com.App.APP.Mapper;
 
 import com.App.APP.DTO.DiagnosticoDTO;
+import com.App.APP.DTO.Esta_DiagDTO;
 import com.App.APP.Entity.Diagnostico;
+import com.App.APP.Entity.Esta_Diag;
 
 public class DiagnosticoMapper {
     public static DiagnosticoDTO DatosToDTO(Diagnostico diagnostico) {
@@ -11,6 +13,10 @@ public class DiagnosticoMapper {
 
         // Persona persona = diagnostico.getPersona();
         //  PersonaDTO personasDTO = persona != null ? PersonaMapper.DatosNameToDTO(persona) : null;
+        
+        Esta_Diag esta_Diag = diagnostico.getEsta_diag();
+        Esta_DiagDTO esta_DiagDTOss = Esta_DiagMapper.DatosToDTO(esta_Diag);
+
 
         return DiagnosticoDTO.builder()
                 .idhc(diagnostico.getIdhc())
@@ -26,6 +32,7 @@ public class DiagnosticoMapper {
                 .plan_pago(diagnostico.getPlan_pago())
                 .monto_total(diagnostico.getMonto_total())
                 .edad(diagnostico.getEdad())
+                .esta_DiagDTO(esta_DiagDTOss)
                 // .personaDTO(personasDTO)
                 // .sesionesDTOS(sesionesDTO)
                 // .pagosDTOS(pagoDTO)

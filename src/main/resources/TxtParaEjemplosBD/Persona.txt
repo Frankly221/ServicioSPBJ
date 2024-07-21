@@ -1,12 +1,11 @@
-INSERT INTO person (idpersona, nombre, apellido, domicilio, fecha_nac, lugar_nac, residencia, estado_civil, n_hijos, referencia, tipo_documento, ndoc_documento, correo, genero, id_doc)
-VALUES 
-(1, 'Juan', 'Perez', 'Calle 1', '1990-01-01', 'Ciudad A', 'Ciudad B', 'Soltero', 0, 'Referencia 1', true, 12345678, 'juan.perez@example.com', true, 1),
-(2, 'Ana', 'Gomez', 'Calle 2', '1985-02-02', 'Ciudad B', 'Ciudad C', 'Casado', 2, 'Referencia 2', false, 23456789, 'ana.gomez@example.com', false, 2),
-(3, 'Luis', 'Martinez', 'Calle 3', '1995-03-03', 'Ciudad C', 'Ciudad D', 'Divorciado', 1, 'Referencia 3', true, 34567890, 'luis.martinez@example.com', true, 3),
-(4, 'Maria', 'Lopez', 'Calle 4', '1980-04-04', 'Ciudad D', 'Ciudad E', 'Viudo', 3, 'Referencia 4', false, 45678901, 'maria.lopez@example.com', false, 4),
-(5, 'Carlos', 'Hernandez', 'Calle 5', '1992-05-05', 'Ciudad E', 'Ciudad F', 'Soltero', 0, 'Referencia 5', true, 56789012, 'carlos.hernandez@example.com', true, 5),
-(6, 'Laura', 'Rodriguez', 'Calle 6', '1988-06-06', 'Ciudad F', 'Ciudad G', 'Casado', 2, 'Referencia 6', false, 67890123, 'laura.rodriguez@example.com', false, 6),
-(7, 'Miguel', 'Garcia', 'Calle 7', '1975-07-07', 'Ciudad G', 'Ciudad H', 'Divorciado', 1, 'Referencia 7', true, 78901234, 'miguel.garcia@example.com', true, 7),
-(8, 'Sofia', 'Martinez', 'Calle 8', '1983-08-08', 'Ciudad H', 'Ciudad I', 'Viudo', 3, 'Referencia 8', false, 89012345, 'sofia.martinez@example.com', false, 8),
-(9, 'David', 'Sanchez', 'Calle 9', '1996-09-09', 'Ciudad I', 'Ciudad J', 'Soltero', 0, 'Referencia 9', true, 90123456, 'david.sanchez@example.com', true, 9),
-(10, 'Andrea', 'Diaz', 'Calle 10', '1982-10-10', 'Ciudad J', 'Ciudad K', 'Casado', 2, 'Referencia 10', false, 12345678, 'andrea.diaz@example.com', false, 10);
+INSERT INTO person (nombre, apellido, domicilio, fecha_nac, lugar_nac, residencia, estado_civil, n_hijos, referencia, tipo_documento, ndoc_documento, correo, genero, telefono, id_doc) VALUES 
+('John', 'Doe', '123 Main St', '1985-05-15', 'New York', 'New York', 'Soltero', 0, 'Amigo de la familia', 1, 123456789, 'john.doe@example.com', 1, 5551234, 1),
+('Jane', 'Smith', '456 Elm St', '1990-07-20', 'Los Angeles', 'Los Angeles', 'Casado', 2, 'Compañera de trabajo', 0, 987654321, 'jane.smith@example.com', 0, 5555678, 2),
+('Alice', 'Johnson', '789 Oak St', '1978-03-30', 'Chicago', 'Chicago', 'Viudo', 3, 'Vecina', 1, 564738291, 'alice.johnson@example.com', 0, 5559876, 3),
+('Bob', 'Brown', '101 Pine St', '1982-12-25', 'Houston', 'Houston', 'Divorciado', 1, 'Primo', 0, 192837465, 'bob.brown@example.com', 1, 5552345, 1),
+('Carol', 'Davis', '202 Maple St', '1995-11-15', 'Philadelphia', 'Philadelphia', 'Soltero', 0, 'Amiga de la universidad', 1, 102938475, 'carol.davis@example.com', 0, 5558765, 2),
+('David', 'Miller', '303 Birch St', '1980-08-10', 'Phoenix', 'Phoenix', 'Casado', 4, 'Colega', 0, 567890123, 'david.miller@example.com', 1, 5553456, 3),
+('Eve', 'Wilson', '404 Cedar St', '1988-01-05', 'San Antonio', 'San Antonio', 'Soltero', 0, 'Compañera de clase', 1, 345678901, 'eve.wilson@example.com', 0, 5556543, 1),
+('Frank', 'Moore', '505 Spruce St', '1992-09-17', 'San Diego', 'San Diego', 'Casado', 2, 'Amigo de la infancia', 0, 876543210, 'frank.moore@example.com', 1, 5554321, 2),
+('Grace', 'Taylor', '606 Walnut St', '1975-04-22', 'Dallas', 'Dallas', 'Viudo', 3, 'Compañera de trabajo', 1, 234567890, 'grace.taylor@example.com', 0, 5553210, 3),
+('Henry', 'Anderson', '707 Cherry St', '1983-06-30', 'San Jose', 'San Jose', 'Soltero', 0, 'Vecino', 0, 109283746, 'henry.anderson@example.com', 1, 5557890, 1);

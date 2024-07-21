@@ -68,4 +68,11 @@ public class PersonaController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al actualizar paciente", e);
         }
     }
+
+    //nuevo metodo
+    @GetMapping("/perso/{id}")
+    public PersonaDTO getPersona(@PathVariable int id) {
+        return personaService.getPersonaWithActiveDiagnosticos(id)
+                .orElseThrow(() -> new RuntimeException("Persona no encontrada con el id " + id));
+    }
 }

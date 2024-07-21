@@ -28,7 +28,7 @@ public class DiagnosticoDTO {
     private Double monto_total;
     private int edad;
 
-    // private Esta_DiagDTO esta_DiagDTO;
+     private Esta_DiagDTO esta_DiagDTO;
 
     // private PersonaDTO personaDTO;
 

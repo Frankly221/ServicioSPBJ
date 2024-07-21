@@ -1,6 +1,7 @@
 package com.App.APP.DTO;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -33,7 +34,7 @@ public class PersonaDTO {
     private String correo;
     private int telefono;
 
-    // private List<DiagnosticoDTO> diagnosticosDTO;
+     private List<DiagnosticoDTO> diagnosticosDTO;
     // private List<TelefonoDTO> telefonoDTO;
     // private Tip_DocDTO tip_docDTO;
 

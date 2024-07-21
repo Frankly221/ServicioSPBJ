@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.App.APP.DTO.DiagnosticoDTO;
 import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.Entity.Persona;
 import com.App.APP.Mapper.PersonaMapper;
@@ -71,7 +72,24 @@ public class PersonaService {
         return PersonaMapper.DatosToDTO(existePerson);
     }
 
+    //nuevo metodo :
+     public Optional<PersonaDTO> getPersonaWithActiveDiagnosticos(int idpersona) {
+        Optional<Persona> personita = personaRepository.findById(idpersona);
 
+        if (personita.isPresent()) {
+            PersonaDTO personaDTO = PersonaMapper.DatosToDTO(personita.get());
+
+            // Filtrar diagnósticos activos
+            List<DiagnosticoDTO> activeDiagnosticos = personaDTO.getDiagnosticosDTO().stream()
+                    .filter(diagnosticoDTO -> "Activo".equals(diagnosticoDTO.getEsta_DiagDTO().getEstado()))
+                    .collect(Collectors.toList());
+
+            personaDTO.setDiagnosticosDTO(activeDiagnosticos);
+            return Optional.of(personaDTO);
+        } else {
+            return Optional.empty();
+        }
+    }
     
 
 
