@@ -13,42 +13,44 @@ public class PersonaMapper {
 
     public static PersonaDTO DatosToDTO(Persona persona){
 
-        List<DiagnosticoDTO> diagnosticosDTO = persona.getDiagnosticos().stream().map(DiagnosticoMapper::DatosToDTO)
-        .collect(Collectors.toList());
-
         // List<TelefonoDTO> telefonosDTO = persona.getTelefonosecundario().stream().map(TelefonoMapper::DatosToDTO)
         // .collect(Collectors.toList());
 
+        PersonaDTO personaDTO = PersonaDTO.builder()
+                .nombre(persona.getNombre())
+                .idpersona(persona.getIdpersona())
+                .apellido(persona.getApellido())
+                .domicilio(persona.getDomicilio())
+                .fecha_nac(persona.getFecha_nac())
+                .lugar_nac(persona.getLugar_nac())
+                .referencia(persona.getReferencia())
+                .estado_civil(persona.getEstado_civil())
+                .n_hijos(persona.getN_hijos())
+                .residencia(persona.getResidencia())
+                .tipo_documento(persona.getTipo_documento())
+                .ndoc_documento(persona.getNdoc_documento())
+                .correo(persona.getCorreo())
+                .telefono(persona.getTelefono())
+                .build();
 
-        return PersonaDTO.builder()
-        .nombre(persona.getNombre())
-        .idpersona(persona.getIdpersona())
-        .apellido(persona.getApellido())
-        .domicilio(persona.getDomicilio())
-        .fecha_nac(persona.getFecha_nac())
-        .lugar_nac(persona.getLugar_nac())
-        .referencia(persona.getReferencia())
-        .estado_civil(persona.getEstado_civil())
-        .n_hijos(persona.getN_hijos())
-        .residencia(persona.getResidencia())
-        .tipo_documento(persona.getTipo_documento())
-        .ndoc_documento(persona.getNdoc_documento())
-        .correo(persona.getCorreo())
-        .telefono(persona.getTelefono())
-        .diagnosticosDTO(diagnosticosDTO)   
-        // .telefonoDTO(telefonosDTO)  
-        .build();
-        
+        if (persona.getDiagnosticos() != null && !persona.getDiagnosticos().isEmpty()) {
+            List<DiagnosticoDTO> diagnosticosDTO = persona.getDiagnosticos().stream().map(DiagnosticoMapper::DatosToDTO).collect(Collectors.toList());
+            personaDTO.setDiagnosticosDTO(diagnosticosDTO);
+        }
+
+        return personaDTO;
     }
 
 
     public static Persona DatosToEntity(PersonaDTO personaDTO){
 
-
-
         return Persona.builder()
         .idpersona(personaDTO.getIdpersona())
+        .nombre(personaDTO.getNombre())
         .apellido(personaDTO.getApellido())
+        .estado_civil(personaDTO.getEstado_civil())
+        .n_hijos(personaDTO.getN_hijos())
+        .residencia(personaDTO.getResidencia())
         .domicilio(personaDTO.getDomicilio())
         .fecha_nac(personaDTO.getFecha_nac())
         .lugar_nac(personaDTO.getLugar_nac())

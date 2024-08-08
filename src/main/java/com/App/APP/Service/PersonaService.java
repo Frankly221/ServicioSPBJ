@@ -91,7 +91,9 @@ public class PersonaService {
         }
     }
     
-
+    public void DeletePersona(int idpersona){
+        personaRepository.deleteById(idpersona);
+    }
 
     
 }
