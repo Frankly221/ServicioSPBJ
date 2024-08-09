@@ -1,8 +1,10 @@
 package com.App.APP.Controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.App.APP.DTO.PersonaConSesionesDTO;
 import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.Service.PersonaService;
 
@@ -75,4 +78,15 @@ public class PersonaController {
         return personaService.getPersonaWithActiveDiagnosticos(id)
                 .orElseThrow(() -> new RuntimeException("Persona no encontrada con el id " + id));
     }
+
+    @GetMapping("/sesiones/{fecha}")
+    public ResponseEntity<List<PersonaConSesionesDTO>> getPersonasConSesionesByFecha(
+            @PathVariable("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+        List<PersonaConSesionesDTO> personasConSesiones = personaService.getPersonasConSesionesByFecha(fecha);
+        return ResponseEntity.ok(personasConSesiones);
+    }
+
+
+
+
 }

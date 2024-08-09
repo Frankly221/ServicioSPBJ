@@ -69,5 +69,6 @@ public class SesionesController {
             return new ResponseEntity("No se pudo eliminar la sesión", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     
 }

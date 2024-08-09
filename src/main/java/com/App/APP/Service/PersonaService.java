@@ -1,5 +1,7 @@
 package com.App.APP.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.App.APP.DTO.DiagnosticoDTO;
+import com.App.APP.DTO.PersonaConSesionesDTO;
 import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.Entity.Persona;
+import com.App.APP.Entity.Sesiones;
 import com.App.APP.Mapper.PersonaMapper;
 import com.App.APP.Repositorio.PersonaRepositorio;
 
@@ -92,6 +96,22 @@ public class PersonaService {
     }
     
 
+    //Logica para Obtener Personas con sesiones
 
-    
-}
+     public List<PersonaConSesionesDTO> getPersonasConSesionesByFecha(LocalDate fecha) {
+        Date sqlFecha = Date.valueOf(fecha); // Convertir LocalDate a java.sql.Date
+        List<Persona> personas = personaRepository.findPersonasBySesionFecha(sqlFecha);
+        
+        return personas.stream()
+                       .map(persona -> {
+                           List<Sesiones> sesionesEnFecha = persona.getDiagnosticos().stream()
+                               .flatMap(diagnostico -> diagnostico.getSesiones().stream())
+                               .filter(sesion -> sesion.getFecha().toLocalDate().equals(fecha))
+                               .collect(Collectors.toList());
+                           return PersonaMapper.DatosToDTOWithSesion(persona, sesionesEnFecha);
+                       })
+                       .collect(Collectors.toList());
+    }
+    }
+  
+

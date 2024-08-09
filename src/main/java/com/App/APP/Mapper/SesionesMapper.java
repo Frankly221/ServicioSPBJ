@@ -26,4 +26,15 @@ public class SesionesMapper {
                 .build();
     }
 
+    public static SesionesDTO DatosToDTOOnlyEstado(Sesiones sesiones){
+
+        return SesionesDTO.builder()
+        .id_sesion(sesiones.getId_sesion())
+        .asistio(sesiones.getAsistio())
+        .build();
+
+
+
+    }
+
 }

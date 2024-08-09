@@ -8,4 +8,5 @@ import com.App.APP.Entity.Sesiones;
 @Repository
 public interface SesionesRepository extends JpaRepository<Sesiones, Integer>{
 
+
 }

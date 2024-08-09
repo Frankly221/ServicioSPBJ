@@ -49,4 +49,8 @@ public class SesionesService {
         return sesionesRepository.findById(idSesiones)
                 .orElseThrow(() -> new RuntimeException("Sesiones No encontrado con el id " + idSesiones));
     }
+
+
+
+   
 }
