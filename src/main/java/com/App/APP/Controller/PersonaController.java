@@ -78,15 +78,10 @@ public class PersonaController {
         return personaService.getPersonaWithActiveDiagnosticos(id)
                 .orElseThrow(() -> new RuntimeException("Persona no encontrada con el id " + id));
     }
-
-    @GetMapping("/sesiones/{fecha}")
+     @GetMapping("/sesiones/{fecha}")
     public ResponseEntity<List<PersonaConSesionesDTO>> getPersonasConSesionesByFecha(
             @PathVariable("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         List<PersonaConSesionesDTO> personasConSesiones = personaService.getPersonasConSesionesByFecha(fecha);
         return ResponseEntity.ok(personasConSesiones);
     }
-
-
-
-
 }

@@ -17,63 +17,39 @@ import com.App.APP.Entity.Sesiones;
 import com.App.APP.Mapper.PersonaMapper;
 import com.App.APP.Repositorio.PersonaRepositorio;
 
-
-
 @Service
 public class PersonaService {
-
-
 
     @Autowired
     private PersonaRepositorio personaRepository;
 
     public List<PersonaDTO> SearchAllPaciente(){
-
         List<Persona> personalist = personaRepository.findAll();
-
         return personalist.stream().map(PersonaMapper :: DatosToDTO).collect(Collectors.toList());
     }
 
 
     public Optional<PersonaDTO> SearchOnePersona(int idpersona){
-
         Optional<Persona> personita = personaRepository.findById(idpersona);
-
         return personita.map(PersonaMapper::DatosToDTO);
     }
 
     public PersonaDTO SavePerson(PersonaDTO personaDTO){
-
+        if(personaRepository.existsById(personaDTO.getIdpersona())) new RuntimeException("Persona ya existe con el id "+ personaDTO.getIdpersona());
         Persona personita = PersonaMapper.DatosToEntity(personaDTO);
-
         Persona savePersona = personaRepository.save(personita);
-
         return PersonaMapper.DatosToDTO(savePersona);
-
     }
 
     public PersonaDTO PutPersona(int idpersona,PersonaDTO personaDTO){
+        if(!personaRepository.existsById(idpersona)) new RuntimeException("Persona No encontrado con el id "+ idpersona);
+        Persona persona = PersonaMapper.DatosToEntity(personaDTO);
+        personaRepository.save(persona);
+        return PersonaMapper.DatosToDTO(persona);
+    }
 
-        Persona existePerson = personaRepository.findById(idpersona).orElseThrow( ()-> new RuntimeException("Persona No encontrado con el id "+ idpersona)) ;
-
-        existePerson.setNombre(personaDTO.getNombre());
-        existePerson.setApellido(personaDTO.getApellido());
-        existePerson.setDomicilio(personaDTO.getDomicilio());
-        existePerson.setFecha_nac(personaDTO.getFecha_nac());
-        existePerson.setLugar_nac(personaDTO.getLugar_nac());
-        existePerson.setResidencia(personaDTO.getResidencia());
-        existePerson.setEstado_civil(personaDTO.getEstado_civil());
-        existePerson.setN_hijos(personaDTO.getN_hijos());
-        existePerson.setReferencia(personaDTO.getReferencia());
-        existePerson.setTipo_documento(personaDTO.getTipo_documento());
-        existePerson.setNdoc_documento(personaDTO.getNdoc_documento());
-        existePerson.setCorreo(personaDTO.getCorreo());
-
-
-        personaRepository.save(existePerson);
-
-
-        return PersonaMapper.DatosToDTO(existePerson);
+    public void DeletePersona(int idpersona){
+        personaRepository.deleteById(idpersona);
     }
 
     //nuevo metodo :
@@ -114,4 +90,7 @@ public class PersonaService {
     }
     }
   
+
+
+
 

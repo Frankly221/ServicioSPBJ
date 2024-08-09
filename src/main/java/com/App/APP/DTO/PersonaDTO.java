@@ -32,6 +32,7 @@ public class PersonaDTO {
     private Boolean tipo_documento;
     private int ndoc_documento;
     private String correo;
+    private Boolean genero;
     private int telefono;
      private List<DiagnosticoDTO> diagnosticosDTO;
     // private List<TelefonoDTO> telefonoDTO;
