@@ -22,21 +22,30 @@ public class PersonaService {
 
     @Autowired
     private PersonaRepositorio personaRepository;
+    @Autowired
+    private TelefonoService telfonoService;
 
     public List<PersonaDTO> SearchAllPaciente(){
         List<Persona> personalist = personaRepository.findAll();
-        return personalist.stream().map(PersonaMapper :: DatosToDTO).collect(Collectors.toList());
+        return personalist.stream().map(PersonaMapper :: DatosPrimariosToDTO).collect(Collectors.toList());
     }
 
 
     public Optional<PersonaDTO> SearchOnePersona(int idpersona){
         Optional<Persona> personita = personaRepository.findById(idpersona);
+        personita.get().getDiagnosticos().size();
+        personita.get().getTelefonosecundario().size();
         return personita.map(PersonaMapper::DatosToDTO);
     }
 
     public PersonaDTO SavePerson(PersonaDTO personaDTO){
         if(personaRepository.existsById(personaDTO.getIdpersona())) new RuntimeException("Persona ya existe con el id "+ personaDTO.getIdpersona());
         Persona personita = PersonaMapper.DatosToEntity(personaDTO);
+
+        if(personita.getTelefonosecundario() != null && !personita.getTelefonosecundario().isEmpty()){
+            telfonoService.actualizarListaTelefono(personita.getTelefonosecundario(), personaDTO.getIdpersona());
+        }
+
         Persona savePersona = personaRepository.save(personita);
         return PersonaMapper.DatosToDTO(savePersona);
     }
@@ -44,6 +53,11 @@ public class PersonaService {
     public PersonaDTO PutPersona(int idpersona,PersonaDTO personaDTO){
         if(!personaRepository.existsById(idpersona)) new RuntimeException("Persona No encontrado con el id "+ idpersona);
         Persona persona = PersonaMapper.DatosToEntity(personaDTO);
+
+        if(persona.getTelefonosecundario() != null && !persona.getTelefonosecundario().isEmpty()){
+            telfonoService.actualizarListaTelefono(persona.getTelefonosecundario(), personaDTO.getIdpersona());
+        }
+
         personaRepository.save(persona);
         return PersonaMapper.DatosToDTO(persona);
     }

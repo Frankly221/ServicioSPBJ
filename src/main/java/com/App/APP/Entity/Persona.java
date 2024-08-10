@@ -48,13 +48,13 @@ public class Persona {
     private int telefono;
 
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "persona", fetch= FetchType.LAZY)
     private List<Diagnostico> diagnosticos;
     
-    @OneToOne(mappedBy= "persona")
+    @OneToOne(mappedBy= "persona", fetch= FetchType.LAZY)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "persona", fetch= FetchType.LAZY)
     private List<Telefono> telefonosecundario;
 
     @ManyToOne(fetch= FetchType.EAGER)

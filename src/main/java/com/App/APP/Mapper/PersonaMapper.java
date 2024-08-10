@@ -7,8 +7,11 @@ import com.App.APP.DTO.DiagnosticoDTO;
 import com.App.APP.DTO.PersonaConSesionesDTO;
 import com.App.APP.DTO.PersonaDTO;
 import com.App.APP.DTO.SesionesDTO;
+import com.App.APP.DTO.TelefonoDTO;
+import com.App.APP.Entity.Diagnostico;
 import com.App.APP.Entity.Persona;
 import com.App.APP.Entity.Sesiones;
+import com.App.APP.Entity.Telefono;
 
 public class PersonaMapper {
 
@@ -34,6 +37,12 @@ public class PersonaMapper {
 
     public static PersonaDTO DatosToDTO(Persona persona) {
         PersonaDTO personaDTO = DatosPrimariosToDTO(persona);
+
+        if(persona.getTelefonosecundario() != null && !persona.getTelefonosecundario().isEmpty()) {
+            List<TelefonoDTO> telefonosecundarioDTO = persona.getTelefonosecundario().stream().map(TelefonoMapper::DatosToDTO)
+                    .collect(Collectors.toList());
+            personaDTO.setTelefonosDTO(telefonosecundarioDTO);   
+        }
 
         if (persona.getDiagnosticos() != null && !persona.getDiagnosticos().isEmpty()) {
             List<DiagnosticoDTO> diagnosticosDTO = persona.getDiagnosticos().stream().map(DiagnosticoMapper::DatosToDTO)
@@ -66,6 +75,19 @@ public class PersonaMapper {
 
     public static Persona DatosToEntity(PersonaDTO personaDTO) {
         Persona persona = DatosPrimariosToEntity(personaDTO);
+
+        if(personaDTO.getTelefonosDTO() != null && !personaDTO.getTelefonosDTO().isEmpty()) {
+            List<Telefono> telefonosecundarioDTO = personaDTO.getTelefonosDTO().stream().map(TelefonoMapper::DatosToEntity)
+                    .collect(Collectors.toList());
+            persona.setTelefonosecundario(telefonosecundarioDTO);   
+        }
+
+        if (personaDTO.getDiagnosticosDTO() != null && !personaDTO.getDiagnosticosDTO().isEmpty()) {
+            List<Diagnostico> diagnosticosDTO = personaDTO.getDiagnosticosDTO().stream().map(DiagnosticoMapper::DatosToEntity)
+                    .collect(Collectors.toList());
+            persona.setDiagnosticos(diagnosticosDTO);
+        }
+
         return persona;
     }
 

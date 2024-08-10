@@ -35,7 +35,7 @@ public class PersonaDTO {
     private Boolean genero;
     private int telefono;
      private List<DiagnosticoDTO> diagnosticosDTO;
-    // private List<TelefonoDTO> telefonoDTO;
+    private List<TelefonoDTO> telefonosDTO;
     // private Tip_DocDTO tip_docDTO;
 
 
