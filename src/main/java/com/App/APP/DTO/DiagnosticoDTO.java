@@ -1,6 +1,7 @@
 package com.App.APP.DTO;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class DiagnosticoDTO {
-    
+
     private int idhc;
 
     private Date inic_enferm;
@@ -28,11 +29,11 @@ public class DiagnosticoDTO {
     private Double monto_total;
     private int edad;
 
-     private Esta_DiagDTO esta_DiagDTO;
+    private Esta_DiagDTO esta_DiagDTO;
 
-    // private PersonaDTO personaDTO;
+    private PersonaDTO personaDTO;
 
-    // List<SesionesDTO> sesionesDTOS;
-    // List<PagoDTO> pagosDTOS;
+    List<SesionesDTO> sesionesDTOs;
+    List<PagoDTO> pagosDTOs;
 
-    }
+}

@@ -16,54 +16,50 @@ public class DiagnosticoService {
     @Autowired
     private DiagnosticoRepository diagnosticoRepository;
 
+    @Autowired
+    private PagoService pagoService;
+
     public List<DiagnosticoDTO> SearchAllDiagnostico() {
         List<Diagnostico> diagnosticoList = diagnosticoRepository.findAll();
-        if (diagnosticoList.isEmpty()) {
-            return null;
+        for (Diagnostico diagnostico : diagnosticoList) {
+            diagnostico.getPagos();
+            diagnostico.getSesiones();
         }
-        return diagnosticoList.stream().map(DiagnosticoMapper::DatosToDTO).collect(Collectors.toList());
+        return diagnosticoList.stream().map(DiagnosticoMapper::DatosSeguimientoYPagoToDTO).collect(Collectors.toList());
     }
+
     public DiagnosticoDTO getDiagnosticoById(int idDiagnostico) {
-        Diagnostico diagnostico = searchEntityDiagnostico(idDiagnostico);
+        Diagnostico diagnostico = diagnosticoRepository.findById(idDiagnostico)
+                .orElseThrow(() -> new RuntimeException("Diagnostico ya existe con el id " + idDiagnostico));
+        diagnostico.getPagos();
+        diagnostico.getSesiones();
+        diagnostico.getPersona();
         return DiagnosticoMapper.DatosToDTO(diagnostico);
     }
 
     public void SaveDiagnostico(DiagnosticoDTO diagnosticoDTO) {
-        Diagnostico Diagnostico = DiagnosticoMapper.DatosToEntity(diagnosticoDTO);
-        diagnosticoRepository.save(Diagnostico);
+        if (diagnosticoRepository.existsById(diagnosticoDTO.getIdhc()))
+            new RuntimeException("Diagnostico ya existe con el id " + diagnosticoDTO.getIdhc());
+        Diagnostico diagnostico = DiagnosticoMapper.DatosToEntity(diagnosticoDTO);
+        Diagnostico diagnosticoGuardado = diagnosticoRepository.save(diagnostico);
+
+        if (diagnostico.getPagos() != null && !diagnostico.getPagos().isEmpty()) {
+            pagoService.actualizarListaPagos(diagnostico.getPagos(), diagnosticoGuardado.getIdhc());
+        }
     }
 
     public DiagnosticoDTO editDiagnostico(int idDiagnostico, DiagnosticoDTO diagnosticoDTO) {
-
-        Diagnostico diagnosticoEncontrado = searchEntityDiagnostico(idDiagnostico);
-
-        diagnosticoEncontrado.setInic_enferm(diagnosticoDTO.getInic_enferm());
-        diagnosticoEncontrado.setEtiologia(diagnosticoDTO.getEtiologia());
-        diagnosticoEncontrado.setDiagnostico(diagnosticoDTO.getDiagnostico());
-        diagnosticoEncontrado.setObservacion(diagnosticoDTO.getObservacion());
-        diagnosticoEncontrado.setFecha_eval(diagnosticoDTO.getFecha_eval());
-        diagnosticoEncontrado.setPeso(diagnosticoDTO.getPeso());
-        diagnosticoEncontrado.setTalla(diagnosticoDTO.getTalla());
-        diagnosticoEncontrado.setEnf_cronica(diagnosticoDTO.getEnf_cronica());
-        diagnosticoEncontrado.setN_sesion(diagnosticoDTO.getN_sesion());
-        diagnosticoEncontrado.setPlan_pago(diagnosticoDTO.getPlan_pago());
-        diagnosticoEncontrado.setMonto_total(diagnosticoDTO.getMonto_total());
-        diagnosticoEncontrado.setEdad(diagnosticoDTO.getEdad());
-
-        diagnosticoRepository.save(diagnosticoEncontrado);
-
-        return DiagnosticoMapper.DatosToDTO(diagnosticoEncontrado);
-
+        if (!diagnosticoRepository.existsById(idDiagnostico))
+            new RuntimeException("Diagnostico no encontrado con el id " + idDiagnostico);
+        Diagnostico diagnostico = DiagnosticoMapper.DatosToEntity(diagnosticoDTO);
+        if (diagnostico.getPagos() != null && !diagnostico.getPagos().isEmpty()) {
+            pagoService.actualizarListaPagos(diagnostico.getPagos(), idDiagnostico);
+        }
+        diagnosticoRepository.save(diagnostico);
+        return DiagnosticoMapper.DatosToDTO(diagnostico);
     }
 
     public void deleteDiagnostico(int idDiagnostico) {
-        Diagnostico DiagnosticoEncontrado = searchEntityDiagnostico(idDiagnostico);
-        diagnosticoRepository.delete(DiagnosticoEncontrado);
+        diagnosticoRepository.deleteById(idDiagnostico);
     }
-
-    private Diagnostico searchEntityDiagnostico(int idDiagnostico) {
-        return diagnosticoRepository.findById(idDiagnostico)
-                .orElseThrow(() -> new RuntimeException("Diagnostico No encontrado con el id " + idDiagnostico));
-    }
-
 }

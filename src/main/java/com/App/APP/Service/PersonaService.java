@@ -25,36 +25,37 @@ public class PersonaService {
     @Autowired
     private TelefonoService telfonoService;
 
-    public List<PersonaDTO> SearchAllPaciente(){
+    public List<PersonaDTO> SearchAllPaciente() {
         List<Persona> personalist = personaRepository.findAll();
-        return personalist.stream().map(PersonaMapper :: DatosPrimariosToDTO).collect(Collectors.toList());
+        return personalist.stream().map(PersonaMapper::DatosPrimariosToDTO).collect(Collectors.toList());
     }
 
-
-    public Optional<PersonaDTO> SearchOnePersona(int idpersona){
+    public Optional<PersonaDTO> SearchOnePersona(int idpersona) {
         Optional<Persona> personita = personaRepository.findById(idpersona);
         personita.get().getDiagnosticos().size();
         personita.get().getTelefonosecundario().size();
         return personita.map(PersonaMapper::DatosToDTO);
     }
 
-    public PersonaDTO SavePerson(PersonaDTO personaDTO){
-        if(personaRepository.existsById(personaDTO.getIdpersona())) new RuntimeException("Persona ya existe con el id "+ personaDTO.getIdpersona());
+    public PersonaDTO SavePerson(PersonaDTO personaDTO) {
+        if (personaRepository.existsById(personaDTO.getIdpersona()))
+            new RuntimeException("Persona ya existe con el id " + personaDTO.getIdpersona());
         Persona personita = PersonaMapper.DatosToEntity(personaDTO);
+        Persona savePersona = personaRepository.save(personita);
 
-        if(personita.getTelefonosecundario() != null && !personita.getTelefonosecundario().isEmpty()){
-            telfonoService.actualizarListaTelefono(personita.getTelefonosecundario(), personaDTO.getIdpersona());
+        if (personita.getTelefonosecundario() != null && !personita.getTelefonosecundario().isEmpty()) {
+            telfonoService.actualizarListaTelefono(personita.getTelefonosecundario(), savePersona.getIdpersona());
         }
 
-        Persona savePersona = personaRepository.save(personita);
         return PersonaMapper.DatosToDTO(savePersona);
     }
 
-    public PersonaDTO PutPersona(int idpersona,PersonaDTO personaDTO){
-        if(!personaRepository.existsById(idpersona)) new RuntimeException("Persona No encontrado con el id "+ idpersona);
+    public PersonaDTO PutPersona(int idpersona, PersonaDTO personaDTO) {
+        if (!personaRepository.existsById(idpersona))
+            new RuntimeException("Persona No encontrado con el id " + idpersona);
         Persona persona = PersonaMapper.DatosToEntity(personaDTO);
 
-        if(persona.getTelefonosecundario() != null && !persona.getTelefonosecundario().isEmpty()){
+        if (persona.getTelefonosecundario() != null && !persona.getTelefonosecundario().isEmpty()) {
             telfonoService.actualizarListaTelefono(persona.getTelefonosecundario(), personaDTO.getIdpersona());
         }
 
@@ -62,12 +63,12 @@ public class PersonaService {
         return PersonaMapper.DatosToDTO(persona);
     }
 
-    public void DeletePersona(int idpersona){
+    public void DeletePersona(int idpersona) {
         personaRepository.deleteById(idpersona);
     }
 
-    //nuevo metodo :
-     public Optional<PersonaDTO> getPersonaWithActiveDiagnosticos(int idpersona) {
+    // nuevo metodo :
+    public Optional<PersonaDTO> getPersonaWithActiveDiagnosticos(int idpersona) {
         Optional<Persona> personita = personaRepository.findById(idpersona);
 
         if (personita.isPresent()) {
@@ -84,27 +85,21 @@ public class PersonaService {
             return Optional.empty();
         }
     }
-    
 
-    //Logica para Obtener Personas con sesiones
+    // Logica para Obtener Personas con sesiones
 
-     public List<PersonaConSesionesDTO> getPersonasConSesionesByFecha(LocalDate fecha) {
+    public List<PersonaConSesionesDTO> getPersonasConSesionesByFecha(LocalDate fecha) {
         Date sqlFecha = Date.valueOf(fecha); // Convertir LocalDate a java.sql.Date
         List<Persona> personas = personaRepository.findPersonasBySesionFecha(sqlFecha);
-        
+
         return personas.stream()
-                       .map(persona -> {
-                           List<Sesiones> sesionesEnFecha = persona.getDiagnosticos().stream()
-                               .flatMap(diagnostico -> diagnostico.getSesiones().stream())
-                               .filter(sesion -> sesion.getFecha().toLocalDate().equals(fecha))
-                               .collect(Collectors.toList());
-                           return PersonaMapper.DatosToDTOWithSesion(persona, sesionesEnFecha);
-                       })
-                       .collect(Collectors.toList());
+                .map(persona -> {
+                    List<Sesiones> sesionesEnFecha = persona.getDiagnosticos().stream()
+                            .flatMap(diagnostico -> diagnostico.getSesiones().stream())
+                            .filter(sesion -> sesion.getFecha().toLocalDate().equals(fecha))
+                            .collect(Collectors.toList());
+                    return PersonaMapper.DatosToDTOWithSesion(persona, sesionesEnFecha);
+                })
+                .collect(Collectors.toList());
     }
-    }
-  
-
-
-
-
+}

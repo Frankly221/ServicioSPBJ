@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="sesiones")
+@Table(name = "sesiones")
 @Entity
 @Builder
 public class Sesiones {
@@ -33,9 +33,9 @@ public class Sesiones {
     private Boolean tipo;
     private Time hora;
     private Boolean asistio;
+    private Boolean esSesion;
 
-
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idhc")
     private Diagnostico diagnostico;
 

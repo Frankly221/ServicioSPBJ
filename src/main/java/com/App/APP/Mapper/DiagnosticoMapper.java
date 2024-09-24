@@ -1,24 +1,19 @@
 package com.App.APP.Mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.App.APP.DTO.DiagnosticoDTO;
-import com.App.APP.DTO.Esta_DiagDTO;
+import com.App.APP.DTO.PersonaDTO;
+import com.App.APP.DTO.PagoDTO;
+import com.App.APP.DTO.SesionesDTO;
 import com.App.APP.Entity.Diagnostico;
-import com.App.APP.Entity.Esta_Diag;
+import com.App.APP.Entity.Pago;
+import com.App.APP.Entity.Persona;
 
 public class DiagnosticoMapper {
-    public static DiagnosticoDTO DatosToDTO(Diagnostico diagnostico) {
-
-        // List<SesionesDTO> sesionesDTO = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO).collect(Collectors.toList());
-        // List<PagoDTO> pagoDTO = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO).collect(Collectors.toList());
-
-        // Persona persona = diagnostico.getPersona();
-        //  PersonaDTO personasDTO = persona != null ? PersonaMapper.DatosNameToDTO(persona) : null;
-        
-        Esta_Diag esta_Diag = diagnostico.getEsta_diag();
-        Esta_DiagDTO esta_DiagDTOss = Esta_DiagMapper.DatosToDTO(esta_Diag);
-
-
-        return DiagnosticoDTO.builder()
+    public static DiagnosticoDTO DatosSeguimientoYPagoToDTO(Diagnostico diagnostico) {
+        DiagnosticoDTO diagnosticoDTO = DiagnosticoDTO.builder()
                 .idhc(diagnostico.getIdhc())
                 .inic_enferm(diagnostico.getInic_enferm())
                 .etiologia(diagnostico.getEtiologia())
@@ -32,15 +27,35 @@ public class DiagnosticoMapper {
                 .plan_pago(diagnostico.getPlan_pago())
                 .monto_total(diagnostico.getMonto_total())
                 .edad(diagnostico.getEdad())
-                .esta_DiagDTO(esta_DiagDTOss)
-                // .personaDTO(personasDTO)
-                // .sesionesDTOS(sesionesDTO)
-                // .pagosDTOS(pagoDTO)
                 .build();
+
+        if (diagnostico.getPagos() != null && !diagnostico.getPagos().isEmpty()) {
+            List<PagoDTO> pagos = diagnostico.getPagos().stream().map(PagoMapper::DatosToDTO)
+                    .collect(Collectors.toList());
+            diagnosticoDTO.setPagosDTOs(pagos);
+        }
+        if (diagnostico.getSesiones() != null && !diagnostico.getSesiones().isEmpty()) {
+            List<SesionesDTO> sesiones = diagnostico.getSesiones().stream().map(SesionesMapper::DatosToDTO)
+                    .collect(Collectors.toList());
+            diagnosticoDTO.setSesionesDTOs(sesiones);
+        }
+
+        return diagnosticoDTO;
+    }
+
+    public static DiagnosticoDTO DatosToDTO(Diagnostico diagnostico) {
+        DiagnosticoDTO diagnosticoDTO = DiagnosticoMapper.DatosSeguimientoYPagoToDTO(diagnostico);
+        PersonaDTO persona = PersonaDTO.builder()
+                .idpersona(diagnostico.getPersona().getIdpersona())
+                .nombre(diagnostico.getPersona().getNombre())
+                .apellido(diagnostico.getPersona().getApellido())
+                .build();
+        diagnosticoDTO.setPersonaDTO(persona);
+        return diagnosticoDTO;
     }
 
     public static Diagnostico DatosToEntity(DiagnosticoDTO diagnosticoDTO) {
-        return Diagnostico.builder()
+        Diagnostico diagnostico = Diagnostico.builder()
                 .idhc(diagnosticoDTO.getIdhc())
                 .inic_enferm(diagnosticoDTO.getInic_enferm())
                 .etiologia(diagnosticoDTO.getEtiologia())
@@ -55,6 +70,16 @@ public class DiagnosticoMapper {
                 .monto_total(diagnosticoDTO.getMonto_total())
                 .edad(diagnosticoDTO.getEdad())
                 .build();
+
+        if (diagnosticoDTO.getPagosDTOs() != null && !diagnosticoDTO.getPagosDTOs().isEmpty()) {
+            List<Pago> pagos = diagnosticoDTO.getPagosDTOs().stream().map(PagoMapper::DatosToEntity)
+                    .collect(Collectors.toList());
+            diagnostico.setPagos(pagos);
+        }
+
+        Persona persona = Persona.builder().idpersona(diagnosticoDTO.getPersonaDTO().getIdpersona()).build();
+        diagnostico.setPersona(persona);
+        return diagnostico;
     }
 
 }

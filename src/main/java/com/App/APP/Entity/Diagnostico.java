@@ -42,19 +42,19 @@ public class Diagnostico {
     private Double monto_total;
     private int edad;
 
-    @ManyToOne(fetch= FetchType.EAGER)
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name ="id_esta_diag")
     private Esta_Diag esta_diag;
 
-    @ManyToOne(fetch= FetchType.EAGER)
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name ="idpersona")
     private Persona persona;
 
 
-    @OneToMany(mappedBy= "diagnostico")
+    @OneToMany(mappedBy= "diagnostico", fetch= FetchType.LAZY)
     List<Sesiones> sesiones;
 
-    @OneToMany(mappedBy = "diagnostico")
+    @OneToMany(mappedBy = "diagnostico", fetch= FetchType.LAZY)
     List<Pago> pagos;
 
 }
